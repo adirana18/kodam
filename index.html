@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Khodam</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const khodams = [
+                    "Kosong", "Buaya Lembur", "Gajah Kebengong", "Kuda Keblenger", "Ayam Betelor",
+                    "Kambing Kecipratan", "Bebek Kebelet", "Belalang Kepleset", "Sapi Kedodoran",
+                    "Kucing Kesamber Gledek", "Burung Ketirip"
+                ];
+                const randomKhodam = khodams[Math.floor(Math.random() * khodams.length)];
+
+                const resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = `
+                    <p>Khodam yang ada di dalam diri <span class='name'>${name}</span>:</p>
+                    <h2>${randomKhodam}</h2>
+                    <p>Jangan lupa share ke yang lain agar mereka tahu sosok asli yang ada di dalam diri kamu</p>
+                    <button id="retryButton">Ulangi</button>
+                `;
+
+                document.getElementById('retryButton').addEventListener('click', function() {
+                    window.location.reload();
+                });
+
+                form.style.display = 'none';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Cek Khodam</h1>
+        <div class="result">
+            <p>Cek khodam yang ada di dalam diri kamu</p>
+            <form>
+                <input type="text" id="name" name="name" placeholder="Tulis nama kamu di sini" required>
+                <button type="submit">CHECK</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Support kami di <a href="https://saweria.co/adirana">saweria</a></p>
+    </footer>
+</body>
+</html>
